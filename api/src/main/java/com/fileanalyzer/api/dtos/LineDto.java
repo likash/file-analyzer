@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LineDto {
     private Integer id;
+    private String content;
     private Integer fileId;
     private String longestWord;
     private String shortestWord;
     private Integer length;
-    private Integer avarageWordLength;
+    private Integer averageWordLength;
 }

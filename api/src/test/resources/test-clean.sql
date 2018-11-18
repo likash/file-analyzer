@@ -1,2 +1,2 @@
 DELETE FROM line_info;
-ELETE FROM file_info;
+DELETE FROM file_info;

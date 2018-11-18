@@ -15,8 +15,8 @@ public class LineController {
     private final LineService lineService;
 
     @GetMapping(Api.Files.FILE_LINE)
-    public List<LineDto> getLines() {
-        return lineService.getLines();
+    public List<LineDto> getLines(@PathVariable(name = "file_id") Integer fileId) {
+        return lineService.getLines(fileId);
     }
 
     @GetMapping(Api.Files.FILE_LINE_BY_ID)

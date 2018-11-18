@@ -18,10 +18,11 @@ public class Line {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer lineId;
+    private String content;
     private String longestWord;
     private String shortestWord;
     private Integer length;
-    private Integer avarageWordLength;
+    private Integer averageWordLength;
 
     @ManyToOne
     @JoinColumn(name = "file_id")

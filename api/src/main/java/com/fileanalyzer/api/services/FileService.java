@@ -30,6 +30,10 @@ public class FileService {
         return converter.toDto(fileEntity);
     }
 
+    public Boolean isFileValid(Integer fileId) {
+        return filesRepository.existsFileByFileId(fileId);
+    }
+
     private File findValidFile(Integer fileId) {
         return filesRepository.findById(fileId)
                 .orElseThrow(() -> new EntityNotFoundException(messagesService.getMessage("file.not.found")));

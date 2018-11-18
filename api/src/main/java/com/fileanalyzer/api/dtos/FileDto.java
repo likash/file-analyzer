@@ -21,6 +21,6 @@ public class FileDto {
     private String longestWord;
     private String shortestWord;
     private Integer length;
-    private Integer avarageWordLength;
+    private Integer averageWordLength;
     private List<LineDto> lines;
 }

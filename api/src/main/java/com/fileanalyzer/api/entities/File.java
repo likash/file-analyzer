@@ -27,7 +27,7 @@ public class File {
     private String longestWord;
     private String shortestWord;
     private Integer length;
-    private Integer avarageWordLength;
+    private Integer averageWordLength;
 
     @OneToMany(mappedBy = "file")
     private List<Line> lines;

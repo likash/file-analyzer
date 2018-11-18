@@ -2,6 +2,7 @@ package com.fileanalyzer.api.services;
 
 import com.fileanalyzer.api.dtos.LineDto;
 import com.fileanalyzer.api.entities.Line;
+import com.fileanalyzer.api.repositories.FilesRepository;
 import com.fileanalyzer.api.repositories.LinesRepository;
 import com.fileanalyzer.api.utils.MessagesService;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,14 @@ public class LineService {
     private final ConverterService converter;
     private final MessagesService messagesService;
     private final LinesRepository linesRepository;
+    private final FileService fileService;
 
-    public List<LineDto> getLines() {
-        List<Line> lines = linesRepository.findAll();
+    public List<LineDto> getLines(Integer fileId) {
+        if(!fileService.isFileValid(fileId)) {
+            throw new EntityNotFoundException(messagesService.getMessage("file.not.found"));
+        }
+        List<Line> lines = linesRepository.findByFileFileId(fileId);
+
         return lines.stream()
                 .map(converter::toDto)
                 .collect(Collectors.toList());

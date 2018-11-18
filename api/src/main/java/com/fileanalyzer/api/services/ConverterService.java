@@ -30,7 +30,7 @@ public class ConverterService {
                 .fileName(entity.getFileName())
                 .longestWord(entity.getLongestWord())
                 .shortestWord(entity.getShortestWord())
-                .avarageWordLength(entity.getAvarageWordLength())
+                .averageWordLength(entity.getAverageWordLength())
                 .length(entity.getLength())
                 .lines(emptyIfNull(entity.getLines()).stream()
                         .map(this::toDto)
@@ -45,10 +45,11 @@ public class ConverterService {
 
         return LineDto.builder()
                 .id(entity.getLineId())
+                .content(entity.getContent())
                 .fileId(entity.getFile().getFileId())
                 .longestWord(entity.getLongestWord())
                 .shortestWord(entity.getShortestWord())
-                .avarageWordLength(entity.getAvarageWordLength())
+                .averageWordLength(entity.getAverageWordLength())
                 .length(entity.getLength())
                 .build();
     }
@@ -59,7 +60,7 @@ public class ConverterService {
                 .fileName(dto.getFileName())
                 .longestWord(dto.getLongestWord())
                 .shortestWord(dto.getShortestWord())
-                .avarageWordLength(dto.getAvarageWordLength())
+                .averageWordLength(dto.getAverageWordLength())
                 .length(dto.getLength())
                 .build();
     }
@@ -68,9 +69,10 @@ public class ConverterService {
         File file = filesRepository.findById(dto.getFileId())
                 .orElseThrow(() -> new EntityNotFoundException(messagesService.getMessage("file.not.found")));
         return Line.builder()
+                .content(dto.getContent())
                 .longestWord(dto.getLongestWord())
                 .shortestWord(dto.getShortestWord())
-                .avarageWordLength(dto.getAvarageWordLength())
+                .averageWordLength(dto.getAverageWordLength())
                 .length(dto.getLength())
                 .file(file)
                 .build();
